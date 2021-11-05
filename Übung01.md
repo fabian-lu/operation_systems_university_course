@@ -73,5 +73,31 @@ Vom Child verändert sich die PID nicht, aber natürlich ist die PPID nicht mehr
 
 ### Teil 5
 
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <sys/wait.h>
+
+    int main()
+    {
+        int initialProcessId = getpid();
+        fork();
+        fork();
+
+        printf("Ich bin Child oder Parent\n");
+
+        if(initialProcessId == getpid()) {
+            printf("Ich bin aufjedenfall Parent\n");
+            while (1) {
+            //Endlosschleife,
+            }
+        }
+
+    }
+
+Obwohl die Child Prozesse ihren Programmcode bereits durchlaufen sind (terminiert), bestehen sie noch in der Prozesstabelle. Sie warten auf den Parent, der dessen exit status lesen soll (z.B. ueber wait()). 
+
+![image](./images/wait.png)
+
 
 
