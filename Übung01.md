@@ -37,4 +37,41 @@ Vom Child verändert sich die PID nicht, aber natürlich ist die PPID nicht mehr
 
 ![image](./images/ps_after_kill.png)
 
+### Teil 4
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <sys/wait.h>
+    #include <signal.h>
+
+    //signal handler prototype
+    void sigint_handler();
+
+    //signal handler
+    void sigint_handler() {
+    printf("Macht’s gut und danke fuer den Fisch!\n");
+    exit(EXIT_SUCCESS);
+    }
+
+    int main () {
+    signal(SIGINT, sigint_handler);
+    if (fork () == 0) {
+        //child process
+        while(1) {
+        printf("Child: pid->%ld ppid->%ld\n", (long)getpid(), (long)getppid());
+        }
+    } else {
+        //parent
+        while(1) {
+        printf("Parent: pid->%ld\n", (long)getpid());
+        }
+    }
+
+    return 0;
+    }
+
+### Teil 5
+
+
 
