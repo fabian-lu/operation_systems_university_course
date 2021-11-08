@@ -100,4 +100,8 @@ Obwohl die Child Prozesse ihren Programmcode bereits durchlaufen sind (terminier
 ![image](./images/wait.png)
 
 
+# Aufgabe 2
+Siehe aufgabe2.c 
+Bitte mit gcc -o aufgabe2 -std=c11 aufgabe2.c -Wall -Wextra -D_BSD_SOURCE kompilieren (nutze strdup()) und mit ./aufgabe2 -f commands.txt testen. 
+
 
