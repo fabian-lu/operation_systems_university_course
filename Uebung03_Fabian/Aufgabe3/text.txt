@@ -1,1 +1,0 @@
-Hallo von dup.c 1!

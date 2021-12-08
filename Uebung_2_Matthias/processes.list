@@ -1,6 +1,0 @@
-5
-id=1 arrival=0 comp_time=4 prio=MED
-id=2 arrival=2 comp_time=10 prio=LOW
-id=3 arrival=3 comp_time=8 prio=HIGH
-id=4 arrival=14 comp_time=5 prio=MED
-id=5 arrival=18 comp_time=4 prio=HIGH
