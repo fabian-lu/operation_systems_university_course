@@ -1,0 +1,17 @@
+Commands:
+  erstellen: mknod namedPipe p
+  schreiben: cat > namedPipe
+  lesen (auf neuer Konsole): cat < namedPipe
+
+a)
+=> namedPipe erscheint im Dateisystem, aber auch nachdem man etwas in sie herein geschrieben hat, wird
+die Datei als Leer angezeigt. Außerdem wird die Eingabe gepuffert.
+
+b)
+Die gepufferte EIngabe wird direkt ausgebene.
+
+c)
+Eingegebene Zeichenketten werden direkt ausgegeben.
+
+d)
+Entfernen mit dem rm Befehl, da named Pipes Dateien sind -> rm namedPipe

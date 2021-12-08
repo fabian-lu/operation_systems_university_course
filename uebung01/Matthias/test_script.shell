@@ -1,0 +1,8 @@
+./test_silent 10 &
+./test_silent 10 &
+./test_silent 10 &
+childs
+./test_print
+./test_silent 10
+childs
+quit

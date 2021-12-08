@@ -1,0 +1,7 @@
+/bin/echo Hello World!
+childs
+/bin/sleep 2 &
+childs
+/bin/sleep 5
+childs
+quit
