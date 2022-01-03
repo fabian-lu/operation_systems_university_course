@@ -1,0 +1,5 @@
+1.
+
+In Java kommt es schon bei ca. countMax >= 2000 zu einer Race Condition, deutlich eher als in C.
+
+2.

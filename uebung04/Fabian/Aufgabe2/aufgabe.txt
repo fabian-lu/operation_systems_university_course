@@ -1,0 +1,3 @@
+2.
+Eine Race Condition würde sich bemerkbar machen, wenn die Variable in nicht den Wert count_max * 2 hat.
+Ab ca. count_max >= 10.000 ist die Wahrscheinlichkeit sehr hoch, das es zu einer Race Condition kommt.

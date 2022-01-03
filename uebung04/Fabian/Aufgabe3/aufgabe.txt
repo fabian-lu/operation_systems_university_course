@@ -1,0 +1,15 @@
+4.
+
+Einfach bei der Initialisierung den Startwert des Semaphor-Zählers auf n setzen, wenn
+man n Threads gleichzeitig im kritischen Abschnitts erlauben will.
+Beispiel für 4 Threads: sem_init(&me, 0, 4);
+
+
+5.
+
+Pro Thread gibt es eine Semaphore, die angibt, ob der zugehoerige Thread gerade in den
+kritischen Abschnitt eintreten darf oder nicht.
+Nein, da durch die Bedingungssynchronisation sichergestellt ist, dass gleichzeitig
+nicht 2 Threads im kritischen Bereich sein können. Der vorangestellte Thread gibt quasi dem
+naechsten in der Reihenfolge an das er nun in den kritischen Abschnitt eintreten darf und wartet
+daraufhin 

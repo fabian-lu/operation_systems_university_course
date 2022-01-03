@@ -1,0 +1,22 @@
+-- Teil 01 --
+Command ss: Zeigt Netwerk Socket Informationen an.
+Option -a: Zeigt alle listening und non-listening Ports (listening = es wird noch auf eine Connection
+gewartet; non-listening = eine Verbindung besteht schon, zB können Daten transferiert werden.)
+
+a)
+Local Adress = LokaleAdresse:Port, was für die Verbindung benutzt wird
+
+Foreign Adress = die Adresse und Port auf dem "entfernten System", welche für die Verbindung benutzt werden
+
+State = Status in dem sich die Verbindung gerade verbindet. Bei UDP gibts das nicht, da es sich
+um ein stateless Protokoll handelt. Bei TCP wird so zb angezeigt ob der Port gerade zuhört oder nicht.
+
+
+b)
+Path = unix domain sockets sind mit einem Path benannt. Es existiert keine Adresse, da sie nur für
+die Kommunikation innerhalb eines Hosts gedacht sind.
+
+
+-- Teil 05 --
+Falls die Datei noch nicht gelöscht wurde, kommt es zu einem Bind Error "Address already in use".
+D.h., der Port ist noch gebunden und kann nicht einfach so verwendet werden.
