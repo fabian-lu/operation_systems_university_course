@@ -7,3 +7,4 @@ Gruppenmitglieder:
 - Matthias Drescher (Matrikelnummer: 21777625)
 - Florian Haase (Matrikelnummer: 21868145)
 - Jan Lenke (Matrikelnummer: 21962978)
+- Jan Ole Kraft (Matrikelnummer: 21417141)
