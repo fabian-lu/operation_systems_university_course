@@ -1,0 +1,79 @@
+Teil 01
+-> Schedule der zu Inkonsistenz fuehrt
+
+Eine Inkonsistenz entsteht, wenn beispielsweise der Chopstick 1 frei ist
+(stick[1] = -1) und so geschedult wird, dass sowohl P0 und P1 diesen besetzen:
+
+Global:
+stick[1] = -1; //ist frei
+
+P0:
+int left = 1;
+...
+while(stick[left] >= 0);
+<--- Wechsel auf P1 --->
+
+P1:
+int right = 1; //Chopstick 1 ist eine geteilte Ressource
+...
+while(stick[right] >= 0); //greift nicht da P0 es noch nicht geschafft hat den
+Chopstick zu besetzen, also geht es weiter
+stick[right] = 1; //P1 besetzt Chopstick
+/* eat */
+<--- Wechsel auf P0 --->
+
+P0:
+stick[left] = 0; //P0 besetzt Chopstick
+<--- Inkonsistenz --->
+
+=> Problem liegt hier, P0 konnte nun ebenfalls Chopstick 1 besetzen, obwohl
+dieser gerade von P1 besetzt wurde
+
+--------------------------------------------------------------------------------
+
+Teil 02
+Threads die auf ein Stäbchen zugreifen wollen welches bereits in Gebrauch ist,
+werden in eine Warteschlange eingereiht. Erst wenn der ursprüngliche Thread
+die Ressource wieder freigibt, wird einem anderen Thread zugriff gewährt.
+=> Inkonsistenz behoben
+
+
+Deadlock Schedule:
+Wenn jeder Prozess nach der Aufnahme des linken Stäbchens
+unterbrochen wird, entsteht eine Verklemmung beim Zugriff auf
+den jeweiligen rechten Chopstick.
+Wenn sequentiell bei P0 angefangen wird und P4 als letztes den linken Chopstick
+besetzt, und dann beispielsweise P0 wieder dran ist und versucht den rechten
+Chopstick zu besetzen, dann ist dieser von P4 besetzt, P0 wartet also.. dieser Zyklus
+kann dann quasi weitergeführt werden, P4 wartet auf P3 etc.
+
+
+--------------------------------------------------------------------------------
+
+Teil 03
+Angenommen, es wird sequentiell geschedult:
+Wenn alle immer den Chopstick mit dem größeren Index zuerst aufnehmen, dann nehmen
+alle Philosophers den Chopstick zu ihrer linken zuerst auf, außer Philosoph N-1
+(bei 0 bis N-1 Philosophen), dieser versucht den rechten Chopstick aufzunehmen. P0
+wird es also irgendwann zwangsläufig schaffen auch den rechten aufzunehmen, da dieser
+nicht von P N-1 belegt wird. Es kommt zu keinem Zyklus/Deadlock.
+
+Mit diesem neuen Modell schafft es immer ein Prozess zwei Chopsticks zu besetzen,
+es kommt nie zu einem Deadlock.
+
+--------------------------------------------------------------------------------
+
+Teil 04
+Nein es kommt zu keinem Deadlock, da P_0 nach dem ersten Durchlauf, also wenn alle Philosophen das von ihnen
+linke Essstäbchen in einer Hand halten,testet, ob er den rechten stick bekommt,
+der jedoch belegt ist. Er wird daraufhin den linken stick freigeben und erneut
+versuchen beide sticks zu bekommen.
+
+Da kein Prozess eine reservierte Ressource erst wieder freigibt, nachdem er
+beide zugewiesen bekommen hat, sondern immer den einzelnen stick wieder
+freigibt, wenn der andere nicht verfügbar ist, kann es nie zu einem Deadlock
+kommen, weil alle Ressourcen wieder freigegeben werden, wenn nicht beide
+reserviert werden können.
+
+Note: Wenn mit diesem Modell sequentiell geschedult wird, dann wird quasi
+immer ein Philosoph "übersprungen". Kein THread besetzt eine Ressource dauerhaft.
